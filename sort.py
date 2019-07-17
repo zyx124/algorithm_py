@@ -38,6 +38,7 @@ def merge(left, right):
     return result
     
 #  Insertion Sort: insert the new element into the sorted part 
+
 def insertionSort(array):
     for i in range(1, len(array)):
         j = i-1
@@ -50,4 +51,21 @@ def insertionSort(array):
         
         
         
-#  Quick Sort:         
+#  Quick Sort: pick a pivot and let the left side smaller than the pivot and the other side larger and repeat for the left side and right side until the the whole array is sorted
+def quickSort(array, low, high):
+    if low > high: return 
+    pivot_location = partition(array, low, high)
+    quickSort(array, low, pivot_location-1)
+    quickSort(array, pivot_location+1, high)
+
+
+def partition(array, low, high):
+    pivot = array[high]
+    index = low
+    for i in range(low, high):
+        if array[i] < pivot: 
+            array[i], array[low] = array[low], array[i]
+            index = index + 1
+    array[index], array[high] = array[high], array[index]
+    return index
+
