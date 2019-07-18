@@ -52,6 +52,8 @@ def insertionSort(array):
         
         
 #  Quick Sort: pick a pivot and let the left side smaller than the pivot and the other side larger and repeat for the left side and right side until the the whole array is sorted
+
+	# partition part is usually used in solving array problems like Find Kth Largest Number, it is a quick select method.
 def quickSort(array, low, high):
     if low > high: return 
     pivot_location = partition(array, low, high)
@@ -85,7 +87,10 @@ def QuickSort(array, start, end, k):
 			left += 1 
 			right -= 1
 	if k <= right:
-		return QuickSort(array, )
+		return QuickSort(array, start, right, k)
+	if k >= left:
+		return QuickSort(array, left, end, k)
+	return array[k]
 
 
 
