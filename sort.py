@@ -1,4 +1,4 @@
-# common sort algorithms
+# sort algorithms
 
 # Bubble Sort: compare the two adjacent number and make the larger one "float"
 
@@ -68,4 +68,24 @@ def partition(array, low, high):
             index = index + 1
     array[index], array[high] = array[high], array[index]
     return index
+	
+	## version 2 find the kth smallest element
+def QuickSort(array, start, end, k):
+	if left == right:
+		return array[k]
+	left, right = start, end
+	pivot = array[start + (start - end) // 2]
+	while left <= right:
+		while left <= right and array[left] < array[pivot]:
+			left += 1
+		while left <= right and array[right] > array[pivot]:
+			right -= 1
+		if left <= right:
+			array[left], array[right] = array[right], array[left]
+			left += 1 
+			right -= 1
+	if k <= right:
+		return QuickSort(array, )
+
+
 
