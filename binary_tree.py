@@ -4,9 +4,18 @@ class TreeNode:
 		self.val = val 
 		self.left, self.right = None, None
 		
+'''
+Tree Traversal:
+	DFS(preorder, 
+		inorder,	==> stack LIFO
+		postorder)
+		
+	BFS(level order)==> queue FIFO
+'''
+		
 ## PREORDER traversal
 
-# method 1 recursion 
+## method 1 recursion 
 class Solution:
 	
 	def preorderTraversal(self, root):
@@ -21,7 +30,7 @@ class Solution:
 		self.TraversalRoot(root.left)
 		self.TraversalRoot(root.right)
 		
-# method 2 using stack
+## method 2 using stack
 class Solution:
 	
 	def preorderTraversal(self, root):
@@ -37,9 +46,9 @@ class Solution:
 				stack.append(node.left)
 		return result
 
-## INORDER traversal
+# INORDER traversal
 
-# method 1 recursion 
+## method 1 recursion 
 class Solution:
 	
 	def inorderTraversal(self, root):
@@ -55,7 +64,7 @@ class Solution:
 		self.TraversalRoot(root.right)
 		
 
-# method 2 traverse all the left node and then record and traverse the right node.
+## method 2 traverse all the left node and then record and traverse the right node.
 class Solution:
 	
 	def inorderTraversal(self, root):
@@ -73,10 +82,41 @@ class Solution:
 		return result
 		
 		
+# POSTORDER 
+
+## method 1: recursion
+class Solution:
+	
+	def postorderTraversal(self, root):
+		self.result = []
+		self.TraversalRoot(root)
+		return self.result
 		
 		
+	def TraversalRoot(self, root):
+		if root is None:
+			return 
+		self.TraversalRoot(root.left)
+		self.TraversalRoot(root.right)
+		self.result.append(root.val)
 		
-		
+## method2: stack
+class Solution:
+	def postorderTraversal(self, root):
+        
+        if not root:
+            return []
+        stack = [root]
+        result = []
+        while stack:
+            node = stack.pop()
+            result.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        return result[::-1]
+        
 		
 		
 		

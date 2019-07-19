@@ -49,6 +49,7 @@ def search_matrix(matrix, target):
 			return True
 		else:
 			return False
+			
 	# case2: number in end row
 	elif matrix[end][0] <= target:
 		left, right = 0, n-1
@@ -62,6 +63,7 @@ def search_matrix(matrix, target):
 			return True
 		else:
 			return False
+			
 	# case3: number not in both rows
 	elif target > matrix[start][n-1] and target < matrix[end][0]:
 		return False
