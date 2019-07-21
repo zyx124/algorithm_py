@@ -5,6 +5,7 @@ class TreeNode:
 		self.left, self.right = None, None
 		
 '''
+Binary Tree problems can be solved by recursion of left and right tree.
 Tree Traversal:
 	DFS(preorder, 
 		inorder,	==> stack LIFO
