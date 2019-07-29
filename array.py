@@ -5,10 +5,11 @@ The problems and techniques that relate to array:
 - Merge
 - Median --> find Kth element
 - Subarray --> prefix sum
-- Two Pointers
+- Two Pointers (sort first)
 '''
 
-# Merge two Sorted array (same method as merging two sorted linked lists)
+# Merge two Sorted arrays (same method as merging two sorted linked lists)
+# --> merge K sorted arrays
 class Solution:
 	
 	def mergeSortedArray(self, A, B):
@@ -57,5 +58,72 @@ class Solution:
 			return self.findKth(A, B[k // 2:], k - k // 2)
 		else:
 			return self.findKth(A[k // 2:], B, k - k // 2)
+
+# Maximum subarray  
+class Solution:
+	
+	## Prefix Sum
+	def maxSubArray(self, nums):
+		min_sum, max_sum = 0, -sys.maxsize
+		prefix_sum = 0
+		
+		for n in nums:
+			prefix_sum += n
+			max_sum = max(max_sum, prefix_sum - min_sum)
+			min_sum = min(min_sum, prefix_sum)
 			
+		return max_sum
+		
+	## Kadane's method: use an array to keep track of the value of the maximum subarray  
+	## which containing the current coorsponding position of the original array. 
+	## It is a dynamic programming method. 
+	def maxSubArray(self, nums):
+		m = nums
+		for i in range(1, len(nums)):
+			m[i] = max(nums[i], m[i - 1] + nums[i])
+		
+		return max(m)
+		
+	
+# Two Sum: find the index of 2 numbers in an array that sum up to the target  --> hash/two pointers
+
+# Three sum  can be translated into several two-sum problems.
+class Solution:
+	
+	## Hash Table
+	def TwoSum(self, numbers, target):
+		record = {}
+		for i in range(len(numbers)):
+			if target - numbers[i] in hash:
+				return [record[target - numbers[i]], i]
+			record[numbers[i]] = i
+		return [-1, -1]
+		
+	## two pointers
+	def TwoSum(self, numbers, target):
+		index_table = [i for i, v in sorted(enumerate(numbers), key=lambda x:x[1])]
+		numbers.sort()
+		left, right = 0, len(numbers) - 1
+		while left <= right:
+			if numbers[left] + numbers[right] == target:
+				return sorted([index_table[left], index_table[right]])
+			elif numbers[left] + numbers[right] < target:
+				left += 1
+			else:
+				right -= 1
+		return [-1 -1]
+
+# Partition an array
+class Solution:
+	
+	def partitionArray(self, nums, k):
+		start = 0
+		for i in range(len(nums)):
+			if nums[i] < k:
+				nums[i], nums[start] = nums[start], nums[i]
+				start += 1
+				
+		return start
+
+
 			
