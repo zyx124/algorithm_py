@@ -104,6 +104,7 @@ class Solution:
 		index_table = [i for i, v in sorted(enumerate(numbers), key=lambda x:x[1])]
 		numbers.sort()
 		left, right = 0, len(numbers) - 1
+		
 		while left <= right:
 			if numbers[left] + numbers[right] == target:
 				return sorted([index_table[left], index_table[right]])
