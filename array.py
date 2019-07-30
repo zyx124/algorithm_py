@@ -1,11 +1,11 @@
 '''
 Array is similar to linked lists.
-The problems and techniques that relate to array:
+The problems and tricks that relate to array:
 - Sort 
 - Merge
-- Median --> find Kth element
-- Subarray --> prefix sum
-- Two Pointers (sort first)
+- Median 	--> find Kth element
+- Subarray 	--> prefix sum
+- TwoSum 	--> Two Pointers (sort first)
 '''
 
 # Merge two Sorted arrays (same method as merging two sorted linked lists)
@@ -116,6 +116,7 @@ class Solution:
 # Partition an array
 class Solution:
 	
+	# one pointer
 	def partitionArray(self, nums, k):
 		start = 0
 		for i in range(len(nums)):
@@ -125,5 +126,17 @@ class Solution:
 				
 		return start
 
-
+	# two pointers
+	def partitionArray(self, nums, k):
+		start, end = 0, len(nums) - 1
+		while start <= end:
+			while start <= end and nums[start] < k:
+				start += 1
+			while start <= end and nums[end] > k:
+				end -= 1
 			
+			if start <= end:
+				nums[start], nums[end] = nums[end], nums[start]
+				start += 1
+				end -= 1
+		return start			
