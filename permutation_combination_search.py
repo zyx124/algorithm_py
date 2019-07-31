@@ -30,7 +30,7 @@ class Solution:
 		self.dfs(nums, k, [], 0)
 		return self.result 
 		
-	def bfs(self, nums, k, subset, index):
+	def dfs(self, nums, k, subset, index):
 		if len(subset) == k:
 			self.result.append(subset.copy())
 			return 
