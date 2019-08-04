@@ -31,7 +31,6 @@ This repository contains templates for some algorithm problems in python.
 #### Tree Data Structures
 
 
-
 - Binary Tree
   - Preorder, Inorder, Postorder Traversal  --> DFS
   - Level Order Traversal --> BFS
@@ -41,13 +40,13 @@ This repository contains templates for some algorithm problems in python.
 
 
 
-## Important Algorithms
+## Important methods
 
 - Binary Search
 
 - BFS
 
-- DFS
+- DFS(must **sort** first)
 
 - Two Pointers
 
