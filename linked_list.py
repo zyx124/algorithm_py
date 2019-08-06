@@ -52,7 +52,7 @@ class Solution:
 def findMiddle(head):
 	fast = head
 	slow = head
-	while fast and slow:
+	while fast and fast.next:
 		fast = fast.next.next
 		slow = slow.next
 	return slow
@@ -85,7 +85,7 @@ def mergeTwoLists(l1, l2):
 		else:
 			tail.next = l2
 			l2 = l2.next
-		tail = tail.next
+		tail = taail.next
 	if l1:
 		tail.next = l1
 	if l2:
