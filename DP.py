@@ -1,8 +1,11 @@
 '''
-When is possible to use dynamic programming?
+What is DP?
+- Memory search algorithms, i.e. memorize the value of the past steps to avoid repetitive calculations.
+
+When is it possible to use dynamic programming?
 - find max or min
 - check validity
-- find the number of all solutions
+- find the **number** of all solutions
 
 When not use DP?
 - find all the spesific solution instead of the total number
@@ -16,13 +19,22 @@ DP consists of:
 - answer
 
 DP problem:
-- coordinate: eg. f[x] represent from start to coordinate x
-- 
+- coordinate: eg. f[x] represents from start to coordinate x
+- single sequence: eg. f[i] represents first i positions.
 '''
 
-# coordinate DP
+# coordinate DP:
+# Initialize the boundary conditions like the first column and row.
 
 ## 1. Minimum Path Sum: Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its paths
+
+##########################################################################
+# state: grid[i][j] represents the number of paths from start to (i, j)
+# function: grid[x][y] = min(grid[x - 1][y], grid[x][y - 1])
+# initialization: 	grid[i][0] = 1 
+#  					grid[0][j] = 1
+# answer: grid[m - 1][n - 1]
+###########################################################################
 
 class Solution:
 	def minPathSum(self, grid):
@@ -40,6 +52,49 @@ class Solution:
 
 		return grid[m - 1][n - 1]
 		
+## 2. Climbing Stairs: Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
+class Solution:
+	def climb(self, n):
+		if n == 0:
+			return 0
+		if n == 1:
+			return 1
+		if n == 2:
+			return 2
+		result = [1, 2]
+		for i in range(n - 2):
+			result.append(result[-2] + result[-1])
+		return result[-1]
+
+# Single Sequence:
+# use an array with N+1 in length, where N is the length of the orginal array.
+
+## 1. Word Break: Given a string s and a dictionary of words dict, determine if s can be break into a space-separated sequence of one or more dictionary words.
+
+##########################################################################
+# state: state[i] represents first i letters can break or not
+# function: 1 < j < i, if state[i - j] is valid and s[i - j:i] in the dict, then state[i] is valid
+# initialization: when there is not str, return True, thus state[0] == True
+# result: state[-1]
+##########################################################################
+
+class Solution:
+	def wordBreak(self, s, dict):
+		if len(s) == 0:
+			return True
+		if len(dict) == 0:
+			return False
+		state = [True] + [False] * len(s)
+		max_len = max([len(i) for i in s])
+		for i in range(1, len(s) + 1):
+			for j in range(1, min(i, max_len) + 1):
+				if not state[i - j]:
+					continue
+				if s[i - j:i] in dict:
+					state[i] = True
+					break
+		return state[-1]
 		
+
 		
