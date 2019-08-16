@@ -96,5 +96,53 @@ class Solution:
 					break
 		return state[-1]
 		
+## 2. Check if a part of string is palindrome.
 
+#############################################
+# state: f[i][j] represents from ith to jth position of the string is a palindrome or not.
+# function: f[i + 1][j - 1] == True AND s[i] == s[j]
+# initialization: f[i][i] == True
+# result: f[x][y] represents the result of the string from xth to yth.
+##############################################
+
+class Solution:
+	def validPalidrome(self, s):
+		n = len(s)
+		is_palindrome = [[False for i in range(n)] for i in range(n)]
+		for i in reversed(range(n)):
+			for j in range(i, n):
+				if s[i] == s[j] and (j - i < 2 or is_palindrome[i + 1][j - 1]):
+					is_palindrome[i][j] = True
+
+		return is_palindrome
 		
+		
+# Double Sequence
+# state:f[i][j] represents the first i items of the first sequence and first j items of the second sequence.
+# initialization: f[i][0], f[0][j]
+# answer: f[n][m]
+# n = len(s1), m = len(s2)
+
+## 1. Longest common sequence
+
+#######################################
+# state: f[i][j] is the longest common sequence of the first i elements of s1 and first j element of s2
+# function: f[i][j] = max(f[i - 1][j], f[i][j - 1], f[i - 1][j - 1] + 1) when s1[i] == s2[j]
+# f[i][j] = max(f[i - 1][j], f[i][j - 1]) when s1[i] != s2[j]
+# initialization: f[0][j] = f[i][0] = 0
+# result: f[m][n]
+#########################################
+
+class Solution:
+	def longest_common_sub(self, s1, s2):
+		m, n = len(s1), len(s2)
+		f = [[0 for i in range(n + 1)] for j in range(m + 1)]
+		for i in range(m):
+			for j in range(n):
+				if s1[i] != s2[j]:
+					f[i + 1][j + 1] = max(f[i + 1][j], f[i][j + 1])
+				else:
+					f[i + 1][j + 1] = max(f[i + 1][j], f[i][j + 1], f[i][j] + 1)
+		return f[m][n]
+		
+
