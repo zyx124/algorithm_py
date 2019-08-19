@@ -49,12 +49,21 @@ class Solution:
 		return dummy.next
 		
 # find the middle node
+
+## version 1: find the left element when node number is even, [1,2,3,4] will return 2
 def findMiddle(head):
 	fast = head
 	slow = head
 	while fast and fast.next and fast.next.next:
 		fast = fast.next.next
 		slow = slow.next
+	return slow
+## version 2: find the right element when node number is even, [1,2,3,4] will return 3
+def findMiddle(head):
+	fast, slow = head, head
+	while fast and fast.next:
+		fast = fast.next.next
+		slow = slow.next 
 	return slow
 
 # find the Nth node to the last element
