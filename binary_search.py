@@ -3,7 +3,7 @@
 ## binary search a number 
 def binary_search(nums, target):
 	start, end = 0, len(nums) - 1
-	while start+1 < end:
+	while start + 1 < end:
 		mid = start + (end - start) // 2
 		if target > nums[mid]:
 			start = mid
@@ -27,7 +27,7 @@ def search_matrix(matrix, target):
 	n = len(matrix[0])  #number of columns
 	# find the start and end rows
 	start, end = 0, m-1
-	while start+1 < end:
+	while start + 1 < end:
 		mid = start + (end - start) // 2
 		if matrix[mid][0] >= target:
 			end = mid

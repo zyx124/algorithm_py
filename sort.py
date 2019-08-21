@@ -37,7 +37,7 @@ def merge(left, right):
         result = result + right
     return result
     
-#  Insertion Sort: insert the new element into the sorted part O(n^2)
+#  Insertion Sort: insert the new element into the sorted part. O(n^2)
 
 def insertionSort(array):
     for i in range(1, len(array)):
