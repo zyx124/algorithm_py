@@ -5,13 +5,23 @@ class TreeNode:
 		self.left, self.right = None, None
 		
 '''
-Binary Tree problems can be solved by recursion of left and right tree.
-Tree Traversal:
+Most of Binary Tree problems can be solved by recursion of left and right tree.
+First think about recursion on left and right subtrees.
+
+Basic code problems:
+
+1. Tree Traversal:
 	DFS(preorder, 
 		inorder,	==> stack LIFO
 		postorder)
 		
 	BFS(level order)==> queue FIFO
+2. Maximum Depth
+3. Path Sum:
+	- root to leaves
+	- root to any node
+	- any node to any node
+	
 '''
 		
 ## PREORDER traversal
@@ -177,10 +187,44 @@ class Solution:
 		
 		
 		
+# Find Maximum depth of subtree 
+class Solution:
+	
+	def maxDepth(self, root):
+		if not root:
+			return 0
+		return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
+# Minimum depth of subtree 
+class Solution:
+	
+	def minDepth(self, root):
+		if not root:
+			return 0
+		left = self.minDepth(root.left)
+		right = self.minDepth(root.right)
+		if root.left and root.right:
+			return min(left, right) + 1 
+		else:
+			return max(left, right) + 1
 		
 		
+# Lowest common ancestors
+class Solution:
+	def lowestCommonAncestors(self, root, p, q):
+		if not root:
+			return root
+		if root == p or root == q:
+			return root
+		left = self.lowestCommonAncestors(root.left, p, q)
+		right = self.lowestCommonAncestors(root.right, p, q)
 		
-		
+		if left and right:
+			return root
+		if left:
+			return left
+		if right:
+			return right
 		
 		
 		
