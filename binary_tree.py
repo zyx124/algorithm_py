@@ -22,6 +22,13 @@ Basic code problems:
 	- root to any node
 	- any node to any node
 	
+	
+Binary Search Tree(BST):
+- left tree node value less than root value
+- right tree node value larger than root value
+- inorder traversal is a ascending sorted list
+
+	
 '''
 		
 ## PREORDER traversal
@@ -225,7 +232,46 @@ class Solution:
 			return left
 		if right:
 			return right
-		
+			
+			
+ # Find all the root to leaf depth
+ class Solution:
+ 	def root_to_leaf(self, root):
+ 		"""
+ 		return: all the paths from root to leaves
+ 		"""
+ 	
+ 		result = []
+ 		self.dfs(root, [root.val], result)
+ 		return result 
+ 		
+ 	def dfs(self, root, subset, result):
+ 		if not root.left and not root.right:
+ 			result.append(subset)
+ 		for node in [root.left, root.right]:
+ 			if node:
+ 				subset.append(node.val)
+ 				self.dfs(node, subset, result)
+ 				subset.pop()
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
 		
 		
 		
