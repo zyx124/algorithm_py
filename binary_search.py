@@ -3,7 +3,7 @@
 # The general template for binary search is:
 # - find mid
 # - compare mid and target value to shrink the bound 
-# - check if the result after the loop is qualified answer.
+# - check if the result after the loop is a qualified answer.
 
 ## Tips: when there is a certain range for the answer, the conditions to find left and right bound could be different.
 

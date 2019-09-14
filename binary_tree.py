@@ -254,10 +254,46 @@ class Solution:
  				self.dfs(node, subset, result)
  				subset.pop()
  	
+ # Maximum Path Sum (root to any)
+ class Solution:
+ 	
+ 	def maximum_path_sum(self, root):
+ 		if not root:
+	 		return 0
+	 	left_sum = self.maximum_path_sum(root.left)
+	 	right_sum = self.maximum_path_sum(root.right)
+	 	if left_sum < 0:
+	 		left_sum = 0
+	 	if right_sum < 0:
+	 		right_sum = 0
+	 	return max(root.val + left_sum, root.val + right_sum)
  	
  	
+ # Maximum Path Sum (any to any)
+ class Solution
  	
- 	
+ 	 """
+    @param root: The root of binary tree.
+    @return: An integer
+    """
+    def maxPathSum(self, root):
+    	self.max_path_sum = -sys.maxsize
+    	self.helper(root):
+    	
+    	return self.max_path_sum
+    
+    def helper(self, root):
+    	if not root:
+    		return 0
+    	left = self.helper(root.left)
+    	if left < 0:
+    		left = 0
+    	right = self.helper(root.right)
+    	if right < 0:
+    		right = 0
+    	self.max_path_sum = max(self.max_path_sum, left + right + root.val)
+    	
+    	return max(left + root.val, right + root.val)
  	
  	
  	
