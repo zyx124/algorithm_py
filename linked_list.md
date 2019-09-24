@@ -3,7 +3,7 @@ Linked List is a linear data structure. All the nodes have a pointer pointing to
 Linked list is defined as:
 
 
-```python         
+```python
 
 class ListNode(object):
 
@@ -14,31 +14,43 @@ class ListNode(object):
 
 ```
 
-Be careful, the structure of a linked list changes only when some node's *next* pointer changes.
-
+One thing to be noticed is that the structure of a linked list changes only when some node's *next* pointer changes.
 
 
 Linked List basic methods:
 
 - insert a node
-
 - delete a node
-
 - reverse from mth to nth
-
 - find the middle 
-
 - merge two linked lists  --> merge K sorted linked list 
-
 - copy a list
 
 
+## Reverse a Linked List 
 
-## reverse from mth to nth: 2 pointers 
+```python
+class Solution:
+	
+	def reverse(self, head):
+		cur = None
+		
+		while head:
+			temp = head.next
+			head.next = cur
+			cur = head
+			head = temp
+		
+		return cur
+```
+
+
+## Reverse From mth to nth (2 pointers)
 
 This is a more general solution of reversing a linked list for any portion. 
 
 ```python
+
 class Solution:
 
 	def reverseBetween(self, head, m, n):
@@ -69,25 +81,33 @@ class Solution:
 ```
 
 
-## find the middle node
+## Find the Middle Node
 
 **version 1**: find the left element when node number is even, [1,2,3,4] will return 2
+
+```python
 def findMiddle(head):
 	fast = head
 	slow = head
 	while fast and fast.next and fast.next.next:
 		fast = fast.next.next
 		slow = slow.next
+```
+
 **version 2**: find the right element when node number is even, [1,2,3,4] will return 3
+
+```python
 def findMiddle(head):
 	fast, slow = head, head
 	while fast and fast.next:
 		fast = fast.next.next
 		slow = slow.next 
 	return slow
+```
 	
-## find the Nth node to the last element
+## Find the Nth Node to The Last Element
 
+```python
 def nth2Last(head, n):
 	if not head:
 		return head
@@ -102,3 +122,53 @@ def nth2Last(head, n):
 		p1 = p1.next
 		
 	return p1
+```
+
+## How to detect a cycle
+
+If there is a cycle, the linked list will have a infinite loop when we use a pointer to traverse the list. Therefore, we can use two pointers, one fast and the other slow, to traverse the linked list. If there is a cycle, the fast pointer will wait the slow pointer. If they meet somewhere, we can stop and declare that we have found the cycle.
+
+```python
+class Solution:
+	
+	def hasCycle(self, head):
+		if not head:
+			return False
+		fast = head
+		slow = head
+		while fast and fast.next:
+			fast = fast.next.next
+			slow = slow.next
+			if fast == slow:
+				return True
+		
+		return False
+```
+
+Further, we may also want to know where the cycle starts. Some calculation is needed here. Suppose the length of the cycle is *l*, the distance from the start of the cycle to the head is *a*, the place where the fast catches up with the slow has distance *b* with respect to the start of the cycle, the other part of the cycle will be *c = (l - b)*. Since the fast pointer is twice the speed of the slow one, *a + l + b = 2(a + b)* ===> *a = c*. Therefore, after the fast pointer meet the slow one, if we move a pointer from the head with the same speed with the fast pointer, the place where they meet will be the starting point of the cycle.
+
+```python
+class Solution:
+	
+	def cycle_start(self, head):
+		if not head or not head.next:
+			return None
+		slow = head
+		fast = head
+		while fast and fast.next:
+			slow = slow.next
+			fast = fast.next.next
+			if slow == fast:
+				break
+		
+		if slow == fast:
+			slow = head
+			while slow  != fast:
+				slow = slow.next
+				fast = fast.next
+			return slow
+		
+		return None
+```
+
+
