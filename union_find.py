@@ -28,5 +28,4 @@ class UnionFind:
 		for i in path:
 			self.father[i] = node 
 		
-		return node 
-		
+		return node 		
