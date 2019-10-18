@@ -36,5 +36,35 @@ Basic operations of a heap that needs to know:
 - delete a node: if the node is a leaf, just delete it. If it is not a leaf, replace it with the last leaf of its children, and then sift down until the heap is valid.
 - add a node: Add it to the leaf, then sift up until the heap is valid.
 - heapify: If using sift up just like adding a node, it will take O(nlogn) to finish, where logn is the height of the tree. To reduce the time complexity, we sift down instead of sift up, which will take O(n). Let h=logn be the height of the tree, and k is the layer number from bottom, kth layer will have 2^(h - k) nodes, and each node will sift down at most k times. We have sum(k * 2^(h - k)) for k from 1 to h, we can simplify the equation as sum((k/2^k) * 2^h), we know sum of k/2^k will be bounded to a constant and 2^h = n. The total time is thus O(n).
+
+In python, heapq is the lib to realize a min heap. heap.pop() or heap[0] will return the smallest element in the heap.
+
 '''
+ 
+# An example of heapify
+class Solution:
+    """
+    @param: A: Given an integer array
+    @return: nothing
+    """
+    def heapify(self, A):
+        # write your code here
+        for i in range(len(A) // 2, -1, -1):
+            self.sift_down(A, i)
+            
+    def sift_down(self, A, i):
+        n = len(A)
+        while i < n:
+            minId = i 
+            left, right = 2 * i + 1, 2 * i + 2
+            if left < n and A[left] < A[minId]:
+                minId = left
+            if right < n and A[right] < A[minId]:
+                minId = right
+            if minId == i:
+                break
+            A[i], A[minId] = A[minId], A[i]
+            
+            i = minId
+
 
