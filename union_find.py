@@ -1,4 +1,8 @@
-# Union find is a data structure which support two types of operations: Union and find, which both take O(1) in time complexity.
+'''
+Union Find
+Union Find is a data structure that provides union() and find() functions, both of which have the time complexity O(n).
+This data structure is a direct graph in essence, each node of which has a Big Father. When doing the union() operation, we in fact union the Big Fathers.
+'''
 
 class UnionFind:
 	

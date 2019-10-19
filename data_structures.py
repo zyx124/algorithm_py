@@ -28,6 +28,11 @@ class Solution:
 		
 
 '''
+Heap:
+Heap is a tree data structure, which has push(), pop(), peak() methods. Push(), pop() are both O(logn) and peak() is O(1).
+
+It also has remove() operation to delete an arbitrary node in the heap. If we remove a node with, we can use Hashheap to reduce the time complexity from O(n) to O(logn). The key in the hash is the node value and the value is the node's index.
+
 For a heap, a node with index i has left son with index 2 * i + 1, right son with index 2 * i + 2, the parent has index (i - 1) // 2.
 
 The basic for a min heap is that the left and the right children must be larger than their parent.
@@ -66,5 +71,87 @@ class Solution:
             A[i], A[minId] = A[minId], A[i]
             
             i = minId
+
+
+# Python heapq does not support hashheap where remove a node takes O(logn). We need to implement it by ourselves. We map the node to its index in the heap so that we can find it using O(1) and then by sift_down which takes O(logn), we get the remove() operation with O(logn). 
+
+class HashHeap:
+	"""
+	The remove operation is O(nlogn)
+	"""
+	def __init__(self, desc=False):
+		self.hash = dict()
+		self.heap = []
+		self.desc = desc
+	
+	@property
+	def size(self):
+		return len(self.heap)
+		
+	def push(self, item):
+		self.heap.append(item)
+		self.hash[item] = self.size - 1
+		self._sift_up(self.size - 1)
+																																																																							
+	def pop(self):
+		item = self.heap[0]
+		self.remove(item)
+		return item
+	
+	def top(self):
+		return self.heap[0]
+		
+	def remove(self, item):
+		if item not in self.hash:
+			return
+		index = self.hash[item]
+		self._swap(index, self.size - 1)
+		
+		del self.hash(item)
+		self.heap.pop()
+		
+		if index < self.size:
+			self._sift_up(index)
+			self.sift_down(index)
+	
+	def _smaller(self, left, right):
+		return right < left if self.desc else left < right
+	
+	def _sift_up(self, index):
+		while index != 0:
+			parent = index // 2
+			if self._smaller(self.heap[parent], self.heap[index]):
+				break
+			self._swap(parent, index)
+			index = parent
+			
+	def _sift_down(self, index):
+		if indx is None:
+			return 
+		while index * 2 < self.size:
+			smallest = index
+			left = index * 2
+			right = index * 2 + 1
+			
+			if self._smaller(self.heap[left], self.heap[smallest]):
+				smallest = index
+			
+			if right < self.size and self._smaller(self.heap[right], self[smallest]):
+				smallest = index
+			
+			if smallest == index:
+				break
+		
+			self._swap(index, smallest)
+			index = smallest
+	
+	def _swap(self, i, j):
+		ele1 = self.heap[i]
+		ele2 = self.heap[j]
+		self.heap[i] = ele2
+		self.heap[j] = ele2
+		self.hash[ele1] = j
+		self.hash[ele2] = i
+		
 
 
