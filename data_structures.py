@@ -154,4 +154,47 @@ class HashHeap:
 		self.hash[ele2] = i
 		
 
+## Example: Sliding Window
+
+import heapq
+class Solution:
+    """
+    @param nums: A list of integers
+    @param k: An integer
+    @return: The median of the element inside the window at each moving
+    """
+    def medianSlidingWindow(self, nums, k):
+        # write your code here
+        self.maxheap = []
+        self.minheap = []
+        result = []
+        
+        for i in range(len(nums)):
+            if len(self.maxheap) == 0 or nums[i] <= -self.maxheap[0]:
+                heapq.heappush(self.maxheap, -nums[i])
+            else:
+                heapq.heappush(self.minheap, nums[i])
+            
+            self.balance()
+            if i >= k:
+                if nums[i - k] >= self.minheap[0]:
+                    self.minheap.remove(nums[i - k])
+                    heapq.heapify(self.minheap)
+                else:
+                    self.maxheap.remove(-nums[i - k])
+                    heapq.heapify(self.maxheap)
+            
+                self.balance()
+            
+            if i >= k - 1:
+                result.append(-self.maxheap[0])
+                
+        return result
+                
+    
+    def balance(self):
+        while len(self.maxheap) < len(self.minheap):
+            heapq.heappush(self.maxheap, -heapq.heappop(self.minheap))
+        while len(self.minheap) < len(self.maxheap) - 1:
+            heapq.heappush(self.minheap, -heapq.heappop(self.maxheap))
 
