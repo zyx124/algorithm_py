@@ -155,6 +155,10 @@ class HashHeap:
 		
 
 ## Example: Sliding Window
+"""
+The basic idea is that by maintaining two heaps, we let the median in the top of the heaps. The maximum number of the maxheap is less than the minimum number of the minheap. 
+To keep the sliding window in the predifined length, remove method is needed. If we use the sift_down method of the heaps, the total time is O(nklogk) where k is the length of the sliding window. If we define the remove method as above, which takes O(logk), we can reduce the time to O(nlogk).
+"""
 
 import heapq
 class Solution:
