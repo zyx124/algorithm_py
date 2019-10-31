@@ -4,9 +4,13 @@ Linear Data Structure:
 - Stack LIFO	--> DFS
 - Hash
 
+Advanced use of stacks: monotune stacks
+to find first element larger/smaller than the element in the stack.
+
 Tree Data Structure:
 - Heap/Priority Queue	--> sort
 - TreeMap
+- Trie
 '''
 
 # top K largest number
@@ -201,4 +205,58 @@ class Solution:
             heapq.heappush(self.maxheap, -heapq.heappop(self.minheap))
         while len(self.minheap) < len(self.maxheap) - 1:
             heapq.heappush(self.minheap, -heapq.heappop(self.maxheap))
+            
+
+# implement a Trie
+"""
+Trie is a data structure that stores strings, which can save space because several words with the same prefix can share the path of the prefix.
+"""
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_valid = False
+        
+        
+class Trie:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        """
+        Inserts a word into the trie.
+        """
+        node = self.root
+        for i in word:
+            if i not in node.children:
+                node.children[i] = TrieNode()
+            node = node.children[i]
+        node.is_valid = True
+
+    def find(self, word):
+        node = self.root
+        for i in word:
+            node = node.children.get(i)
+            if not node:
+                return None
+        return node
+    
+    def search(self, word: str) -> bool:
+        """
+        Returns if the word is in the trie.
+        """
+        node = self.find(word)
+        return node is not None and node.is_valid
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        """
+        node = self.find(prefix)
+        return node is not None
 
