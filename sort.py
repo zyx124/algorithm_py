@@ -66,7 +66,7 @@ def partition(array, low, high):
     index = low
     for i in range(low, high):
         if array[i] < pivot: 
-            array[i], array[low] = array[low], array[i]
+            array[i], array[index] = array[index], array[i]
             index = index + 1
     array[index], array[high] = array[high], array[index]
     return index
