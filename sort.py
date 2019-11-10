@@ -72,24 +72,24 @@ def partition(array, low, high):
     return index
 	
 	## version 2 find the kth smallest element
-def QuickSort(array, start, end, k):
-	if left == right:
+def partition(array, start, end, k):
+	if start == end:
 		return array[k]
 	left, right = start, end
 	pivot = array[start + (start - end) // 2]
 	while left <= right:
-		while left <= right and array[left] < array[pivot]:
+		while left <= right and array[left] < pivot:
 			left += 1
-		while left <= right and array[right] > array[pivot]:
+		while left <= right and array[right] > pivot:
 			right -= 1
 		if left <= right:
 			array[left], array[right] = array[right], array[left]
 			left += 1 
 			right -= 1
 	if k <= right:
-		return QuickSort(array, start, right, k)
+		return patition(array, start, right, k)
 	if k >= left:
-		return QuickSort(array, left, end, k)
+		return partition(array, left, end, k)
 	return array[k]
 
 
