@@ -9,3 +9,12 @@ def get_column(board):
 	return column_matrix
 # The result would be [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
 
+
+"""
+>>> m = [[0] * 4] * 2
+>>> m[0][1] = 1
+>>> m
+	[[0, 1, 0, 0], [0, 1, 0, 0]]
+instead of [[0, 1, 0, 0], [0, 0, 0, 0]]
+
+"""

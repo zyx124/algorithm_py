@@ -44,5 +44,19 @@ def fourSum(numbers, target):
 				else:
 					right -= 1
 	return result
+	
 
+# Partition
+def partition(array, low, high):
+    pivot = array[high]
+    index = low
+    for i in range(low, high):
+        if array[i] < pivot: 
+            array[i], array[index] = array[index], array[i]
+            index = index + 1
+    array[index], array[high] = array[high], array[index]
+    return index
+
+# Minimum size subarray: Given an array of n positive integers and a positive integer s, find the minimum length of the contiguous subarray of which the sum >= s, if there isn't one, return 0
+# The solution to this problem with time O(n^2) is not that hard to come out. We just need to find all the contiguous subarrays. By using two pointers, we can avoid some cases that are 
 
