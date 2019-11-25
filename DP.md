@@ -104,7 +104,7 @@ class Solution:
 		if len(dict) == 0:
 			return False
 		state = [True] + [False] * len(s)
-		max_len = max([len(i) for i in s])
+		max_len = max([len(i) for i in dict])
 		for i in range(1, len(s) + 1):
 			for j in range(1, min(i, max_len) + 1):
 				if not state[i - j]:
@@ -136,7 +136,7 @@ class Solution:
 				if s[i] == s[j] and (j - i < 2 or is_palindrome[i + 1][j - 1]):
 					is_palindrome[i][j] = True
 
-		return is_palindrome
+		return is_palindrome[0][n - 1]
 
 ```
 
