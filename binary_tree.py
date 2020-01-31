@@ -155,7 +155,7 @@ class Solution:
 					queue.append(node.left)
 				if node.right:
 					queue.append(node.right)
-			result.insert(0, level)
+			result.append(level)
 		
 		return result		
 		
