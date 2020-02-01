@@ -89,7 +89,7 @@ class Solution:
 		stack = []
 		current = root
 		result = []
-		while stack or current:
+		while current or stack: ## must check current first then stack
 			if current:
 				stack.append(current)
 				current = current.left
@@ -262,11 +262,8 @@ class Solution:
 	 		return 0
 	 	left_sum = self.maximum_path_sum(root.left)
 	 	right_sum = self.maximum_path_sum(root.right)
-	 	if left_sum < 0:
-	 		left_sum = 0
-	 	if right_sum < 0:
-	 		right_sum = 0
-	 	return max(root.val + left_sum, root.val + right_sum)
+	 	
+	 	return max(left_sum, right_sum, 0) + root.val 
  	
  	
  # Maximum Path Sum (any to any)
