@@ -37,7 +37,7 @@ class Solution:
 		p1 = p1.next
 		p2 = p2.next
 		
-		for i in range(n-m):
+		for i in range(n - m):
 			tmp = p2.next
 			p2.next = p1
 			p1 = p2
