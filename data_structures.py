@@ -250,7 +250,8 @@ class Trie:
         Returns if the word is in the trie.
         """
         node = self.find(word)
-        return node is not None and node.is_valid
+        return node is not None and n
+        ode.is_valid
         
 
     def startsWith(self, prefix: str) -> bool:
