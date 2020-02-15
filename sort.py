@@ -1,5 +1,7 @@
 # sort algorithms
 
+# The default python sort() method uses merge sort.
+
 # Bubble Sort: compare the two adjacent number and make the larger one "float"
 
 def bubbleSort(array):

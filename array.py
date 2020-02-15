@@ -129,7 +129,7 @@ class Solution:
 		return start
 
 	# two pointers
-	def partitionArray(self, nums, k):
+	def partitionArray(self,sa nums, k):
 		start, end = 0, len(nums) - 1
 		while start <= end:
 			while start <= end and nums[start] < k:

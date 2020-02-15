@@ -60,7 +60,12 @@ class Solution:
 			self.dfs(nums, subset, i+1, result)
 			subset.pop()
 		
-			
+# we can actually actually treat the combinitions and permutations as graph problems. Trees are also graphs that can be solved by dfs or bfs.
+
+# Take a look at the graph problems.
+# Topological sorting: directed and undirected graphs
+
+
 			
 			
 			
