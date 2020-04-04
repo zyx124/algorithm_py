@@ -40,9 +40,6 @@ def count_bits(number):
 # x // 2 is equivalent to x >> 1
 # x * 2 is equivalent to x << 1
 # check x is power is 2: return x & (x - 1) == 0
-# check an integer x bit by bit from MSB:
-for i in range(len(format(x, 'b')), -1, -1):
-	cur_bit = x >> i
-	print(cur_bit)
+
 
 
