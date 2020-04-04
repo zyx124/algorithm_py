@@ -28,3 +28,21 @@ def count_bits(number):
 			count += 1
 		a = a >> 1
 	return count 
+	
+## Python Binary Operations
+# &: and, 
+# |: or, 
+# ^: xor,
+# ~x: ones complement, same as -x - 1
+# x>>y: shift right, same as x // 2**y
+# x<<y: shift left, same x * 2**y
+
+# x // 2 is equivalent to x >> 1
+# x * 2 is equivalent to x << 1
+# check x is power is 2: return x & (x - 1) == 0
+# check an integer x bit by bit from MSB:
+for i in range(len(format(x, 'b')), -1, -1):
+	cur_bit = x >> i
+	print(cur_bit)
+
+
