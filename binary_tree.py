@@ -26,7 +26,7 @@ Basic code problems:
 Binary Search Tree(BST):
 - left tree node value less than root value
 - right tree node value larger than root value
-- inorder traversal is a ascending sorted list
+- inorder traversal is a ascending sorted list (This property has been used many times.)
 
 	
 '''
@@ -305,6 +305,6 @@ class Solution:
  	
  	
  	
-		
+k		
 		
 		

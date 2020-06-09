@@ -35,11 +35,12 @@ def count_bits(number):
 # ^: xor,
 # ~x: ones complement, same as -x - 1
 # x>>y: shift right, same as x // 2**y
-# x<<y: shift left, same x * 2**y
+# x<<y: shift left, same x * 2**y, 1 << n is another example of 2**n.
 
 # x // 2 is equivalent to x >> 1
 # x * 2 is equivalent to x << 1
 # check x is power is 2: return x & (x - 1) == 0
+
 
 
 
