@@ -6,7 +6,7 @@ This data structure is a direct graph in essence, each node of which has a Big F
 
 class UnionFind:
 	
-	def __init__(self, size):
+	def __init__(self, nodes):
 		""""
 		nodes: a list of nodes
 		father: a hashmap to record the father of each node
@@ -14,7 +14,7 @@ class UnionFind:
 		"""
 		self.nodes = nodes
 		self.father = {n: n for n in size}
-		self.size = size
+		self.size = len(nodes)
 		
 	def union(self, node1, node2):
 		root1 = self.find(node1)
