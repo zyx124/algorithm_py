@@ -10,17 +10,21 @@ class Solution:
         # write your code here
         self.result = []
         self.dfs(nums, [])
+        visited = [False for i in range(len(nums))]
         return self.result
     
-    def dfs(self, nums, temp):
+    def dfs(self, nums, temp, visited):
         if len(temp) == len(nums):
             self.result.append(temp.copy())
             
         for i in range(len(nums)):
-            if nums[i] not in temp:
-                temp.append(nums[i])
-                self.dfs(nums, temp)
-                temp.pop()
+            if visited[i]:
+            	continue
+            temp.append(nums[i])
+            visited[i] = True
+            self.dfs(nums, temp)
+            temp.pop()
+            visited[i] = False
 			
 ## combinations: find the combinations of k numbers out of a list.
 class Solution:
@@ -60,7 +64,7 @@ class Solution:
 			self.dfs(nums, subset, i+1, result)
 			subset.pop()
 		
-# we can actually actually treat the combinitions and permutations as graph problems. Trees are also graphs that can be solved by dfs or bfs.
+# we can actually treat the combinitions and permutations as graph problems. Trees are also graphs that can be solved by dfs or bfs.
 
 # Take a look at the graph problems.
 # Topological sorting: directed and undirected graphs
