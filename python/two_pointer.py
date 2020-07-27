@@ -12,6 +12,31 @@ classic problems:
 
 """
 
+## 2Sum
+def two_sum(nums, target):
+	nums.sort()
+	result = []
+	start, end = 0, len(nums) - 1
+	while start < end:
+		sum = nums[start] + nums[end]
+		if sum == target:
+			result.append([nums[start], nums[end]])
+			left += 1
+			right -= 1
+			while left < right and nums[left] == nums[left - 1]:
+				left += 1
+			while left < right and num[right] == nums[right + 1]:
+				right -= 1
+		elif sum < target:
+			left += 1
+		else: 
+			right -= 1
+			
+	return result
+			
+		
+
+
 # 4Sum: Given an array and a target, find all the combinations of 4 numbers in the list to have a sum equal to the target value.
 # eg. Input:[1,0,-1,0,-2,2],0
 # Output:
@@ -43,6 +68,37 @@ def fourSum(numbers, target):
 					left += 1
 				else:
 					right -= 1
+	return result
+	
+	
+## k sum 
+def k_sum(nums, k, start, target):
+	result = []
+	if k < 2 or len(nums) < k:
+		return result 
+	# two sum
+	if k == 2:
+		left, right = start, len(nums) - 1
+		while left < right:
+			sum = nums[left] + nums[right]
+			if sum == target:
+				result.append([nums[left], nums[right]])
+				left += 1
+				right -= 1
+				while left < right and nums[left] == nums[left - 1]:
+					left += 1
+				while left < right and nums[right] == nums[right + 1]:
+					right -= 1
+			elif sum < target:
+				left += 1
+			else: 
+				right -= 1
+	else:
+		for i in range(start, len(nums) - 1):
+			subarray = k_sum(nums, k - 1, i + 1, target - nums[i])
+			for arr in subarray:
+				arr.append(nums[i])
+				result.append(arr)
 	return result
 	
 
