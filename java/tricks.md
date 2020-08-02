@@ -142,3 +142,19 @@ string to char
 char c = s.charAt(0);
 ```
 
+
+
+## ASCII conversion
+
+check if a char is lower
+
+```java
+String S = "World";
+System.out.println(Character.isLetter(S.charAt(0)));
+
+// if there is only alphanumeric
+// in ascii, 'a' represent 97, 'A' represent 65
+// if a char is alphanumeric and larger or equal than 65, it is a lowercase letter.
+System.out.println(S.charAt(0) - 'a' >= 0)
+```
+
