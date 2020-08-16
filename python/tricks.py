@@ -44,3 +44,7 @@ def count_bits(number):
 
 
 
+# Find mode of a list
+mode = max(set(list), key=list.count)
+
+
