@@ -129,17 +129,45 @@ String str = "abc";
 char[] chars = str.toCharArray();
 ```
 
+ArrayList to Array
+
+```java
+List<Character> cList = new ArrayList<Character>(Arrays.asList('a', 'b', 'c'));
+Character[] cArray = cList.toArray(new Character[cList.size()]);
+
+/*
+if we only use toArray() method, the array object type is Object.
+*/
+```
+
+
+
 char to String
 
 ```java
 char c = 'a';
-String s = String.valueOf(c);
+String s1 = String.valueOf(c);
+String s2 = Character.toString(c);
 ```
 
 string to char
 
 ```java
 char c = s.charAt(0);
+```
+
+array to ArrayList
+
+```java
+String array = {"a", "b", "c"};
+// method 1
+List<String> list1 = new ArrayList<String>(Arrays.asList(array));
+
+// method 2
+List<String> list2 = new ArrayList<String>();
+Collections.addAll(list2, array);
+
+
 ```
 
 
