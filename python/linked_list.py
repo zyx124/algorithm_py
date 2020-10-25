@@ -17,7 +17,17 @@ Some tricks:
 - use a dummy node when the structure of the linked list changes
 - use fast and slow pointers to record the positions of some nodes --> detect cycle
 '''
-#
+# reverse linked list
+class Solution: 
+    
+    def reverseLinkedList(self, head):
+        prev = None
+        while head:
+            temp = head.next
+            head.next = prev
+            prev = head
+            head = temp
+        return prev 
 
 # reverse from mth to nth: 2 pointers 
 class Solution:
