@@ -32,12 +32,14 @@ Initialize the boundary conditions, usually the first column and row.
 
 1. Minimum Path Sum: Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its paths
 
+   
+
 ---
 state: grid[i][j] represents the number of paths from start to (i, j)
-function: grid[x][y] = min(grid[x - 1][y], grid[x][y - 1])
-initialization: 	grid[i][0] = 1 
- 					grid[0][j] = 1
-answer: grid[m - 1][n - 1]
+function: $grid[x][y] = min(grid[x - 1][y], grid[x][y - 1])$
+initialization: 	$grid[i][0] = 1 $
+ 					$grid[0][j] = 1$
+answer: $grid[m - 1][n - 1]$
 
 
 ---
@@ -92,7 +94,7 @@ Let's take a look at 2 examples.
 state: state[i] represents first i letters can break or not
 function: 1 < j < i, if state[i - j] is valid and s[i - j:i] in the dict, then state[i] is valid
 initialization: when there is not str, return True, thus state[0] == True
-result: state[-1]
+result: state[-1] 
 
 ---
 
@@ -126,7 +128,7 @@ result: f[x][y] represents the result of the string from xth to yth.
 
 ---
 
-```
+```python
 class Solution:
 	def validPalidrome(self, s):
 		n = len(s)

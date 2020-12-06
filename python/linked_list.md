@@ -104,7 +104,7 @@ def findMiddle(head):
 		slow = slow.next 
 	return slow
 ```
-	
+
 ## Find the Nth Node to The Last Element
 
 ```python
@@ -163,7 +163,7 @@ class Solution:
 		
 		if slow == fast:
 			slow = head
-			while slow  != fast:
+			while slow != fast:
 				slow = slow.next
 				fast = fast.next
 			return slow
@@ -172,7 +172,7 @@ class Solution:
 ```
 
 ## Copy a Linked List With a Random Pointer
-
+```python
 class RandomListNode:
     def __init__(self, x):
         self.label = x
@@ -180,30 +180,30 @@ class RandomListNode:
         self.random = None
         
 class Solution:
-	
-	def copy_ramdom_list(self, head):
-		my_map = {}
-		nHead = RandomListNode(head.label)
-		my_map[head] = nHead
-		p = head
-		q = nHead
-		while p:
-			q.random = p.random   # the copied node's random pointer still points to the original list's node 
-			if p.next:
-				q.next = RandomListNode(p.next.label)
-				my_map[p.next] = q.next
-			else:
-				q.next = None
-			p = p.next
-			q = q.next
-			
-		p = nHead
-		
-		while p:
-			if p.random:
-				p.random = my_map[p.random]
-			p = p.next
-		
+    def copy_ramdom_list(self, head):
+        my_map = {}
+        nHead = RandomListNode(head.label)
+        my_map[head] = nHead
+        p = head
+        q = nHead
+        while p:
+            q.random = p.random   # the copied node's random pointer still points to the original list's node 
+            if p.next:
+                q.next = RandomListNode(p.next.label)
+                my_map[p.next] = q.next
+            else:
+                q.next = None
+            p = p.next
+            q = q.next
+
+        p = nHead
+
+        while p:
+            if p.random:
+                p.random = my_map[p.random]
+            p = p.next
+```
+
 
 
 
