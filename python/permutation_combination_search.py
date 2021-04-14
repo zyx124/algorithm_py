@@ -58,10 +58,10 @@ class Solution:
 		return result
 		
 	def dfs(self, nums, subset, index, result):
-		result.append(subset.copy())
+		result.append(subset.copy())   # the copy of subset is necessary to make result not blank
 		for i in range(index, len(nums)):
 			subset.append(nums[i])
-			self.dfs(nums, subset, i+1, result)
+			self.dfs(nums, subset, i+1, result)  # the index become i 
 			subset.pop()
 		
 # we can actually treat the combinitions and permutations as graph problems. Trees are also graphs that can be solved by dfs or bfs.
